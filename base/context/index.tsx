@@ -1,4 +1,3 @@
-import { GetToken } from 'base/auth/token';
 import { Product } from 'base/types';
 import React from 'react';
 
@@ -9,6 +8,7 @@ const AppContext = React.createContext({
   setIsLogin: (value: boolean) => {},
   cart : [] as Product[],
   setCart: (values: Product[]) => {},
+  removeItemCart: (index: number) => {},
 });
 
 export default AppContext;

@@ -1,9 +1,17 @@
-import React from 'react'
+import AppContext from 'base/context';
+import React from 'react';
 
 const CartStateFn = () => {
-  return (
-    <div>CartStateFn</div>
-  )
-}
+  const context = React.useContext(AppContext);
 
-export default CartStateFn
+  const totalPrice = React.useMemo(() => {
+    return context.cart.reduce((n, { price }) => n + price, 0);
+  }, [context.cart]);
+
+  return {
+    totalPrice,
+    context,
+  };
+};
+
+export default CartStateFn;
