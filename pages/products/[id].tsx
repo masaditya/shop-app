@@ -65,7 +65,7 @@ const Products: NextPage = () => {
               >
                 <FiShoppingCart className="mx-2" /> Add To Cart
               </Button>
-              <Button primary className="mr-5 px-4">
+              <Button primary="true" className="mr-5 px-4">
                 <FiShoppingBag className="mx-2" /> Buy Now
               </Button>
             </div>

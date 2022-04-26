@@ -15,7 +15,7 @@ const Header = () => {
           <span className="text-xl font-bold mx-3 cursor-pointer">OLShop</span>
         </Link>
         <Link href="/products">
-          <Button primary>Catalog</Button>
+          <Button primary="true">Catalog</Button>
         </Link>
       </div>
       <div></div>

@@ -11,7 +11,7 @@ interface Token {
 
 export const HTTPClientAuth = (
   token: Token,
-  opts: Options = { Timeout: 3000 }
+  opts: Options = { Timeout: 10000 }
 ) => {
   const client = axios.create({
     baseURL: FindAPIBaseURL(),
@@ -25,7 +25,7 @@ export const HTTPClientAuth = (
   return client;
 };
 
-export const HTTPClientNonAuth = (opts: Options = { Timeout: 3000 }) => {
+export const HTTPClientNonAuth = (opts: Options = { Timeout: 10000 }) => {
   const client = axios.create({
     baseURL: FindAPIBaseURL(),
     headers: {

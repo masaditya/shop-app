@@ -1,21 +1,23 @@
 import React from 'react';
 import type { NextPage } from 'next';
-import AppContext from 'base/context';
 import { Product } from 'base/types';
 import Header from 'components/Layout/Header';
 import Button from 'components/misc/Button';
 import { FiTrash } from 'react-icons/fi';
 import CartStateFn from 'function/cart/state';
+import { useRouter } from 'next/router';
 const CartPage: NextPage = () => {
+  const router = useRouter();
   const { context, totalPrice } = CartStateFn();
   return (
     <div>
       <Header />
       <div className="grid grid-cols-3 p-10">
         <div className="col-span-2">
+          <p className="text-2xl font-extrabold text-gray-500">Your Cart</p>
           {context.cart.map((item: Product, i: number) => {
             return (
-              <div key={i} className="flex my-3">
+              <div key={i} className="flex my-3" >
                 <div className="p-4 w-36 h-48 border-2 rounded-lg">
                   <img
                     className=" w-full h-full rounded-lg object-cover"
@@ -24,7 +26,7 @@ const CartPage: NextPage = () => {
                   />
                 </div>
                 <div className="ml-5 flex-col flex justify-between py-4">
-                  <p className="text-lg font-semibold">{item.title}</p>
+                  <p onClick={()=> router.push("/products/"+item.id)} className="text-lg font-semibold cursor-pointer">{item.title}</p>
                   <p className="text-gray-500 font-bold my-5">
                     $ {item.price},-
                   </p>
@@ -51,7 +53,9 @@ const CartPage: NextPage = () => {
               <p>Total Price : </p>
               <p className="font-semibold"> $ {totalPrice},- </p>
             </div>
-            <Button primary className="w-full mt-auto">Checkout</Button>
+            <Button onClick={()=> router.push("/checkout")} primary="true" className="w-full mt-auto">
+              Checkout
+            </Button>
           </div>
         </div>
       </div>
